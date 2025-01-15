@@ -1,5 +1,8 @@
-target/
-Cargo.lock
-input.txt
-.idea
 *~
+.idea
+Cargo.lock
+flamegraph.svg
+input.txt
+perf.data
+perf.data.old
+target/
