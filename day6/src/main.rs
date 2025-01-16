@@ -60,15 +60,14 @@ fn count_loops(map: Vec<Vec<u8>>, visited: &FxHashSet<(i32, i32)>, start: (usize
                 return false;
             }
 
-            let mut map2 = map.clone();
-            map2[y][x] = b'#';
-            is_loop(&map2, start)
+            is_loop(&map, start, (x, y))
         })
         .count()
 }
 
 // Same as `walk` but record the direction dxdy as well.
-fn is_loop(map: &[Vec<u8>], start: (usize, usize)) -> bool {
+fn is_loop(map: &[Vec<u8>], start: (usize, usize), new_obstacle: (usize, usize)) -> bool {
+    let new_obstacle = (new_obstacle.0 as i32, new_obstacle.1 as i32);
     let mut visited = FxHashSet::default();
     let mut position = (start.0 as i32, start.1 as i32);
     let mut dxdy = (0i32, -1);
@@ -85,7 +84,7 @@ fn is_loop(map: &[Vec<u8>], start: (usize, usize)) -> bool {
 
         if let Some(c) = get(map, next_position) {
             // i.e. '.' or '#'
-            if c != b'#' {
+            if c != b'#' && next_position != new_obstacle {
                 position = next_position;
             } else {
                 dxdy = turn_right_90(dxdy);
