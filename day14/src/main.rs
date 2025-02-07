@@ -39,9 +39,9 @@ fn main() {
     println!("part1: {part1}");
     assert_eq!(part1, 229980828);
 
-    // I assumed the tree looked like, for X_LEN = 11, Y_LEN = 7 and
-    // 12 robots (https://adventofcode.com/2015). Therefore all robots
-    // have a unique position.
+    // I assumed the tree looked like the below, for X_LEN = 11, Y_LEN
+    // = 7 and 12 robots (https://adventofcode.com/2015). Therefore
+    // all robots have a unique position.
     //
     // .....*.....
     // ....*.*....
